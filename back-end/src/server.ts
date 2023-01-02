@@ -1,8 +1,16 @@
+import * as http from "http";
 import HTTPServer from "./app";
 
-const ENV_PORT: string | undefined = process.env.PORT;
-const HTTP_SERVER_PORT: number = ENV_PORT ? parseInt(ENV_PORT) : 5000;
-const CLI_SERVER_RUNNING_MSG = `[Server]: HTTP Server is currently on port ${HTTP_SERVER_PORT}.`;
+const ENV_SPECIFIED_PORT: string | undefined = process.env.PORT;
+const HTTP_SERVER_PORT: number = ENV_SPECIFIED_PORT ? parseInt(ENV_SPECIFIED_PORT) : 5000;
+const CLI_SERVER_RUNNING_MSG = `[Server]: HTTP Server running successfully on port ${HTTP_SERVER_PORT}\n\n\tNavigate to http://localhost:${HTTP_SERVER_PORT}\n`;
 
-HTTPServer
-    .listen(HTTP_SERVER_PORT, () => console.log(CLI_SERVER_RUNNING_MSG));
+interface Logger {
+    log(msg: string): void;
+}
+
+function startHTTPServer(port: number, logger: Logger, serverDisplayMsg: string): http.Server {
+    return HTTPServer.listen(port, () => logger.log(serverDisplayMsg));
+}
+
+startHTTPServer(HTTP_SERVER_PORT, console, CLI_SERVER_RUNNING_MSG);
