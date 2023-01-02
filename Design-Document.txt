@@ -1,0 +1,32 @@
+Soapbox Opera Design Document
+
+Overview
+
+Generic User A needs a way to chat with Generic User B about generic user stuff. Super important.
+
+That's it.
+
+Super important stuff between big important people. Gotta be real-time.
+
+
+
+Basic Requirements:
+    1. CRUD for USERS
+    2. CRUD for CONVERSATIONS
+
+GUI Requirements:
+    1. register username/password
+    2. user list
+    3. conversation view
+    4. input field for message to be sent
+    5. Log in/Log Out
+
+
+Websocket. I'm making a websocket, using TypeScript, React for client, Node.js for REST API server. Both familiar technologies so I can develop this quickly.
+This project is going to be small, I'm not developing it beyond a basic chat feature. I'm opting for a non-relational database (MongoDB) to make this quick and dirty.
+I can't imagine ever needing to query the data from this app for anything, and I don't plan on bothering with caching on the server-side to improve the read speed
+drawbacks of relational databases systems. If I bother with testing for this exploratory build, I'll go with Jest/React Testing Library for the client, and Jest for
+the server. Both libraries are familiar to me and will help keep development time to a minimum.
+
+
+Cool, bye.
